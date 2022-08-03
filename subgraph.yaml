@@ -1,0 +1,26 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Auction
+    network: chapel
+    source:
+      address: "0xE3d616F18f99E8cA3932AD5d1D3B2B9A81D39d2b"
+      abi: Auction
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - auctionEnded
+        - highestBidIncreased
+      abis:
+        - name: Auction
+          file: ./abis/Auction.json
+      eventHandlers:
+        - event: auctionEnded(address,uint256)
+          handler: handleauctionEnded
+        - event: highestBidIncreased(address,uint256)
+          handler: handlehighestBidIncreased
+      file: ./src/mapping.ts
