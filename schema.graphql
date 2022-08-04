@@ -1,0 +1,14 @@
+type Bid @entity {
+  id: ID!
+  count: BigInt!
+  winner: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type Bidder @entity {
+  id: ID!
+  totalBids: BigInt!
+  totalWithdraws: BigDecimal!
+  from: Bytes!
+  amount: BigInt! # uint256
+}
